@@ -36,10 +36,10 @@ jobs:
     - name: Deploy to AWS EKS
       uses: aws-actions/eks-eksctl@v0.1.0
       with:
-        cluster-name: your-cluster-name
-        region: your-region
-        role-to-assume: arn:aws:iam::YOUR_ACCOUNT_ID:role/YOUR_IAM_ROLE
+        cluster-name: Chai_Dapp
+        region: es-east-1
+        role-to-assume: arn:aws:iam::975049908225:role/Chai_Dapp-cluster-20240717200422471100000003
 
     - name: Update Kubernetes Deployment
       run: |
-        kubectl set image deployment/frontend frontend=${{ secrets.DOCKER_HUB_USERNAME }}/chai-dapp-frontend:latest
+        kubectl set image deployment/frontend frontend=${{ secrets.DOCKER_HUB_USERNAME }}/frontend:latest
