@@ -37,7 +37,7 @@ jobs:
       uses: aws-actions/eks-eksctl@v0.1.0
       with:
         cluster-name: Chai_Dapp
-        region: es-east-1
+        region: es-wast-2
         role-to-assume: arn:aws:iam::975049908225:role/Chai_Dapp-cluster-20240717200422471100000003
 
     - name: Update Kubernetes Deployment
