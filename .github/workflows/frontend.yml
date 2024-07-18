@@ -34,12 +34,6 @@ jobs:
         docker push ${{ secrets.DOCKER_HUB_USERNAME }}/chai-dapp-frontend:latest
 
     - name: Deploy to AWS EKS
-      uses: aws-actions/eks-eksctl@v0.1.0
-      with:
-        cluster-name: Chai_Dapp
-        region: es-wast-2
-        role-to-assume: arn:aws:iam::975049908225:role/Chai_Dapp-cluster-20240717200422471100000003
-
-    - name: Update Kubernetes Deployment
       run: |
-        kubectl set image deployment/frontend frontend=${{ secrets.DOCKER_HUB_USERNAME }}/frontend:latest
+        aws eks update-kubeconfig --name Chai_Dapp --region us-west-2
+        kubectl set image deployment/frontend frontend=${{ secrets.DOCKER_HUB_USERNAME }}/chai-dapp-frontend:latest
